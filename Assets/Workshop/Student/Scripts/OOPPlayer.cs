@@ -47,7 +47,7 @@ namespace Solution
             {
                 //stundent exercise: use FireStorm to attack 3 lower energy enemies on map
                 inventory.UseItem("FireStorm", 1);
-                OOPEnemy[] enemies = SortEnemiesByRemainningEnergy1();
+                OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
                 int count = 3;
                 if (count > enemies.Length)
                 {
@@ -66,6 +66,7 @@ namespace Solution
         public OOPEnemy[] SortEnemiesByRemainningEnergy1()
         {
             var enemies = mapGenerator.GetEnemies();
+
             //stundent exercise: sort enemies by remainning energy
             for (int i = 0; i < enemies.Length - 1; i++)
             {
@@ -76,31 +77,20 @@ namespace Solution
                     {
                         minIndex = j;
                     }
+                    (enemies[i], enemies[minIndex]) = (enemies[minIndex], enemies[i]);
                 }
-                (enemies[i], enemies[minIndex]) = (enemies[minIndex], enemies[i]);
             }
+
             return enemies;
         }
 
         public OOPEnemy[] SortEnemiesByRemainningEnergy2()
         {
             var enemies = mapGenerator.GetEnemies();
-            //student exercise: sort enemies by remaining energy
-            //Array.Sort(enemies, (a, b) => {
-            //    if (a.energy > b.energy)
-            //    {
-            //        return -1;
-            //    }
-            //    else if (a.energy < b.energy)
-            //    {
-            //        return 1;
-            //    }
-            //    else
-            //    {
-            //        return 0;
-            //    }
-            //});
-            Array.Sort(enemies, (a,b) => a.energy.CompareTo(b.energy));
+            //stundent exercise: sort enemies by remainning energy
+            // Array.Sort(enemies, (a, b) => { if (a.energy > b.energy) { return -1; } else if (a.energy < b.energy) { return 1; } else { return 0; };
+            Array.Sort(enemies, (a, b) => a.energy.CompareTo(b.energy));
+
             return enemies;
         }
         public void Attack(OOPEnemy _enemy)
