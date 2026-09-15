@@ -47,7 +47,7 @@ namespace Solution
             {
                 //stundent exercise: use FireStorm to attack 3 lower energy enemies on map
                 inventory.UseItem("FireStrom", 1);
-                OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
+                OOPEnemy[] enemies = SortEnemiesByRemainningEnergy1();
                 int count = 3;
                 if (count > enemies.Length)
                 {
